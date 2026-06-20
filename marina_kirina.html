@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Марина Кирина — Зеркало без фильтров</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #0F0D0B;
+    --bg2:       #181410;
+    --cream:     #F0EBE1;
+    --gold:      #C9A84C;
+    --mid:       #8A8278;
+    --border:    #2A2520;
+    --serif:     Georgia, 'Times New Roman', serif;
+    --sans:      -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: rgba(15,13,11,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+  .nav-link {
+    font-size: 13px;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    border: 1px solid var(--gold);
+    padding: 7px 18px;
+    transition: background 0.2s;
+  }
+  .nav-link:hover { background: var(--gold); color: var(--bg); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 1.05;
+    font-weight: normal;
+    color: var(--cream);
+    margin-bottom: 40px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--mid);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+  }
+  .hero-cta {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--bg);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    padding: 16px 36px;
+    transition: opacity 0.2s;
+  }
+  .hero-cta:hover { opacity: 0.85; }
+
+  /* ── STATS ── */
+  .stats {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: clamp(40px, 6vw, 72px);
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .stat-num span {
+    color: var(--gold);
+    font-size: 0.5em;
+    vertical-align: super;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── SECTION ── */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 96px 48px;
+  }
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  /* ── MIRROR ── */
+  .mirror-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .mirror-headline {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.2;
+    font-weight: normal;
+    margin-bottom: 32px;
+  }
+  .mirror-text {
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .mirror-quote {
+    border-left: 2px solid var(--gold);
+    padding-left: 24px;
+    margin-top: 40px;
+  }
+  .mirror-quote p {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--cream);
+  }
+
+  /* ── METHOD ── */
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+  }
+  .method-card {
+    background: var(--bg2);
+    padding: 40px 32px;
+  }
+  .method-num {
+    font-family: var(--serif);
+    font-size: 48px;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+  .method-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--cream);
+    margin-bottom: 16px;
+    font-weight: normal;
+  }
+  .method-body {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+
+  /* ── FOR WHOM ── */
+  .for-whom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+  }
+  .fw-card {
+    background: var(--bg2);
+    padding: 36px 32px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .fw-icon {
+    color: var(--gold);
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .fw-text {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+  .fw-text strong {
+    display: block;
+    color: var(--cream);
+    font-size: 16px;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  /* ── FORMATS ── */
+  .formats-list {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .format-item {
+    background: var(--bg2);
+    padding: 32px 40px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  .format-tag {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    min-width: 140px;
+    padding-top: 3px;
+  }
+  .format-body {}
+  .format-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--cream);
+    margin-bottom: 8px;
+    font-weight: normal;
+  }
+  .format-desc {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+
+  /* ── TESTIMONIAL ── */
+  .testimonial-section {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .testimonial-section section {
+    padding: 96px 48px;
+  }
+  .testimonial-headline {
+    font-family: var(--serif);
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: normal;
+    max-width: 700px;
+    line-height: 1.3;
+    margin-bottom: 64px;
+  }
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .case-card {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+  }
+  .case-tag {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .case-text {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+  .case-result {
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--cream);
+    font-style: italic;
+  }
+
+  /* ── CONTACT ── */
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .contact-headline {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: normal;
+    line-height: 1.15;
+  }
+  .contact-headline em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .contact-body {
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: var(--cream);
+    font-size: 15px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--gold); }
+  .contact-link-icon {
+    color: var(--gold);
+    font-size: 18px;
+    min-width: 24px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .footer-name {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--mid);
+  }
+  .footer-tag {
+    font-size: 12px;
+    color: var(--border);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── COUNTER ANIMATION ── */
+  .counting { display: inline-block; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .stats { grid-template-columns: 1fr; padding: 48px 24px; gap: 36px; }
+    section { padding: 64px 24px; }
+    .mirror-layout,
+    .contact-layout,
+    .for-whom-grid { grid-template-columns: 1fr; gap: 40px; }
+    .method-grid { grid-template-columns: 1fr; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .format-item { flex-direction: column; gap: 12px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-name" href="#">Марина Кирина</a>
+  <a class="nav-link" href="#contact">Написать</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Зеркало без фильтров</p>
+  <h1 class="hero-title">
+    Вижу,<br>
+    где <em>сломано.</em><br>
+    За 5 минут.
+  </h1>
+  <p class="hero-sub">
+    21 год работы с людьми. 800 000 разговоров. Один честный взгляд — 
+    и человек наконец видит то, что мешало ему двигаться годами.
+  </p>
+  <a class="hero-cta" href="#contact">Записаться на сессию</a>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div>
+    <div class="stat-num">
+      <span class="counting" data-target="800000" data-format="800&thinsp;000">0</span>
+    </div>
+    <div class="stat-label">разговоров — кастинги Дома-2,<br>предприниматели, актёры</div>
+  </div>
+  <div>
+    <div class="stat-num">21</div>
+    <div class="stat-label">год в работе с людьми.<br>Без теории — только живая практика</div>
+  </div>
+  <div>
+    <div class="stat-num">1</div>
+    <div class="stat-label">разговор который меняет<br>всё — навсегда</div>
+  </div>
+</div>
+
+<!-- MIRROR SECTION -->
+<section>
+  <p class="section-eyebrow">Кто я</p>
+  <div class="mirror-layout">
+    <div>
+      <h2 class="mirror-headline">Я не лечу.<br>Я показываю<br>где поломано.</h2>
+      <p class="mirror-text">
+        Большинство людей идут к психологам годами — и выходят с теми же проблемами. 
+        Потому что копают прошлое вместо того чтобы работать с сегодняшней точкой.
+      </p>
+      <p class="mirror-text">
+        Я работаю иначе. Горит сейчас — туши сейчас. Без раскопок детства, 
+        без бесконечных сессий. Один разговор — и ты видишь где именно ты 
+        не честен с собой. Это и меняет всё.
+      </p>
+      <p class="mirror-text">
+        Кастинг-директор «Дом-2» — 7 лет, 800 000 собеседований. 
+        Агент звёзд — вывела Андрея Пынзару из безызвестности в главную роль «Молодёжки». 
+        Автор книги о честности. Веду мастер-майнды для предпринимателей.
+      </p>
+    </div>
+    <div>
+      <div class="mirror-quote">
+        <p>«Жизнь — это не борьба и не выживание. Это игра. 
+        И единственное что мешает играть свою — 
+        это место где ты врёшь себе.»</p>
+      </div>
+
+      <div style="margin-top: 56px;">
+        <p style="font-size: 13px; color: var(--mid); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;">Работала с</p>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="font-size: 15px; color: var(--cream); padding: 16px 0; border-bottom: 1px solid var(--border);">ТНТ · СТС · Россия · Пятница · Дисней · Мир · Перец · ДТВ · Первый канал</div>
+          <div style="font-size: 15px; color: var(--cream); padding: 16px 0; border-bottom: 1px solid var(--border);">Предприниматели · Собственники бизнеса</div>
+          <div style="font-size: 15px; color: var(--cream); padding: 16px 0; border-bottom: 1px solid var(--border);">Актёры · Медийные личности</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section style="background: var(--bg2); max-width: 100%; padding: 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 96px 48px;">
+    <p class="section-eyebrow">Как это работает</p>
+    <h2 style="font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: normal; margin-bottom: 0;">
+      Три шага. Один разговор.
+    </h2>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-num">—</div>
+        <h3 class="method-title">Вижу</h3>
+        <p class="method-body">
+          За первые минуты разговора становится ясно где человек застрял. 
+          Не потому что я умею читать мысли — потому что 800 000 разговоров 
+          дают насмотренность которую не купить ни в каком курсе.
+        </p>
+      </div>
+      <div class="method-card">
+        <div class="method-num">—</div>
+        <h3 class="method-title">Называю</h3>
+        <p class="method-body">
+          Говорю прямо. Без осуждения, без смягчений. 
+          Показываю конкретно: вот здесь сломано, вот откуда это идёт, 
+          вот как это выглядит снаружи. Человек слышит — и узнаёт себя.
+        </p>
+      </div>
+      <div class="method-card">
+        <div class="method-num">—</div>
+        <h3 class="method-title">Отпускаю</h3>
+        <p class="method-body">
+          Я не сопровождаю месяцами. Не держу. Когда человек увидел — 
+          он идёт сам. Именно это и называется изменением навсегда, 
+          а не зависимостью от очередного эксперта.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section>
+  <p class="section-eyebrow">Для кого</p>
+  <h2 style="font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: normal; margin-bottom: 0;">
+    Это не для всех.<br>И это важно.
+  </h2>
+  <div class="for-whom-grid">
+    <div class="fw-card">
+      <div class="fw-icon">◆</div>
+      <div class="fw-text">
+        <strong>Предприниматели с потолком</strong>
+        Всё есть — команда, деньги, опыт. Но что-то не пускает дальше. 
+        Чувствуют масштаб но не видят следующий шаг.
+      </div>
+    </div>
+    <div class="fw-card">
+      <div class="fw-icon">◆</div>
+      <div class="fw-text">
+        <strong>Те кто устал работать над собой</strong>
+        Курсы, коучи, терапия — а воз и ныне там. 
+        Нужен не ещё один инструмент, а честный взгляд со стороны.
+      </div>
+    </div>
+    <div class="fw-card">
+      <div class="fw-icon">◆</div>
+      <div class="fw-text">
+        <strong>Готовые меняться прямо сейчас</strong>
+        Не те кто хочет «подумать» или «попробовать». 
+        Те кто пришёл — и готов услышать правду о себе.
+      </div>
+    </div>
+    <div class="fw-card">
+      <div class="fw-icon">◇</div>
+      <div class="fw-text" style="color: #4A4540;">
+        <strong style="color: #4A4540;">Это не для вас если...</strong>
+        Вы ищете мотивацию, хотите погреться в чужом поле, 
+        или не готовы услышать то, что не совпадает с вашей картиной мира.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATS -->
+<section style="background: var(--bg2); max-width: 100%; padding: 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 96px 48px;">
+    <p class="section-eyebrow">Форматы работы</p>
+    <div class="formats-list">
+      <div class="format-item">
+        <div class="format-tag">Сессия</div>
+        <div class="format-body">
+          <h3 class="format-title">Личная встреча — 90 минут</h3>
+          <p class="format-desc">
+            Один разговор. Ты рассказываешь — я вижу. Называю где поломано, 
+            как это проявляется в бизнесе, отношениях, деньгах. 
+            Уходишь с ясностью которой не было годами.
+          </p>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-tag">Для сообществ</div>
+        <div class="format-body">
+          <h3 class="format-title">Разбор вживую — для группы предпринимателей</h3>
+          <p class="format-desc">
+            Выхожу к вашей аудитории. Работаю с каждым участником при всех. 
+            Остальные учатся на чужом — и узнают себя. 
+            Формат который не заменит ни одна лекция со слайдами.
+          </p>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-tag">Мастер-майнд</div>
+        <div class="format-body">
+          <h3 class="format-title">Закрытая группа предпринимателей</h3>
+          <p class="format-desc">
+            10–15 человек. Встречаемся регулярно. 
+            Разбираем реальные ситуации — без теории, без домашних заданий. 
+            Только то что работает прямо сейчас.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<div class="testimonial-section">
+  <section>
+    <p class="section-eyebrow">Истории</p>
+    <h2 class="testimonial-headline">
+      Тысяча людей изменились навсегда после одного разговора со мной.
+    </h2>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-tag">Бизнес · Ростов — Дубай</div>
+        <p class="case-text">
+          Пришёл на кастинг — озлоблённый, потерянный, ненавидел людей. 
+          5 минут разговора. Через год открыл бизнес. 
+          Через два — Мерседес, амбассадорство.
+        </p>
+        <p class="case-result">Сейчас развивает бизнес в Дубае с семьёй.</p>
+      </div>
+      <div class="case-card">
+        <div class="case-tag">Медийность · Петербург — федеральный уровень</div>
+        <p class="case-text">
+          Неизвестный актёр из Санкт-Петербурга которого никто не замечал. 
+          Увидела потенциал. Помогла выстроить путь.
+        </p>
+        <p class="case-result">Андрей Пынзару — главная роль в «Молодёжке», звезда федерального уровня.</p>
+      </div>
+      <div class="case-card">
+        <div class="case-tag">Продажи · Один пост — один день</div>
+        <p class="case-text">
+          Три месяца диагностик — все говорят «круто», никто не покупает. 
+          Увидела где она врёт себе. Одна встреча.
+        </p>
+        <p class="case-result">60 заявок, 20 продаж — за один день после одного поста.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-layout">
+    <div>
+      <h2 class="contact-headline">
+        Один разговор.<br>
+        <em>Всё становится ясно.</em>
+      </h2>
+    </div>
+    <div>
+      <p class="contact-body">
+        Если вы чувствуете масштаб но не видите следующий шаг — 
+        напишите. Первые пять минут разговора уже покажут, 
+        можем ли мы работать вместе.
+      </p>
+      <div class="contact-links">
+        <a class="contact-link" href="https://t.me/more_kastinga" target="_blank">
+          <span class="contact-link-icon">✈</span>
+          Telegram — @more_kastinga
+        </a>
+        <a class="contact-link" href="mailto:more.kastinga@gmail.com">
+          <span class="contact-link-icon">@</span>
+          more.kastinga@gmail.com
+        </a>
+        <a class="contact-link" href="https://t.me/zakroi_geshtalt" target="_blank">
+          <span class="contact-link-icon">→</span>
+          Блог — колонка о честности
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Марина Кирина</div>
+  <div class="footer-tag">ЗЕРКАЛО БЕЗ ФИЛЬТРОВ · 2025</div>
+</footer>
+
+<script>
+  // Counter animation for 800 000
+  function animateCounter(el) {
+    const target = 800000;
+    const duration = 2000;
+    const start = performance.now();
+    const run = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.floor(eased * target);
+      el.innerHTML = value.toLocaleString('ru-RU').replace(/\s/g, '&thinsp;');
+      if (progress < 1) requestAnimationFrame(run);
+    };
+    requestAnimationFrame(run);
+  }
+
+  const counterEl = document.querySelector('.counting');
+  if (counterEl) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(counterEl);
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(counterEl);
+  }
+</script>
+
+</body>
+</html>
