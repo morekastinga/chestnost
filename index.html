@@ -3,372 +3,661 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Марина Кирина — Бренд-режиссер, Профайлер, Директор по кастингу</title>
+    <title>Марина Кирина — Бренд-режиссер & Профайлер</title>
     <style>
         :root {
-            --bg-color: #0d0f12;
-            --card-bg: #16191e;
-            --accent-color: #d4af37;
-            --accent-hover: #b59226;
-            --text-main: #f1f3f5;
-            --text-muted: #9ea4b0;
-            --border-color: #262a33;
+            --bg: #050507;
+            --surface: rgba(255, 255, 255, 0.03);
+            --surface-hover: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(212, 175, 55, 0.3);
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent: #d4af37;
+            --accent-glow: rgba(212, 175, 55, 0.2);
+            --radius-xl: 28px;
+            --radius-l: 20px;
+            --radius-m: 12px;
+            --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 0;
-            margin: 0;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.5;
+            overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+
+        /* Ambient Glows */
+        .glow-1 {
+            position: absolute;
+            top: -100px;
+            right: 10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glow-2 {
+            position: absolute;
+            top: 600px;
+            left: -100px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(100, 100, 255, 0.05) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+            pointer-events: none;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1140px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Header / Hero Section */
-        header {
-            padding: 60px 0 40px;
-            border-bottom: 1px solid var(--border-color);
+        /* Navigation / Header */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 5, 7, 0.7);
         }
 
-        .hero-grid {
+        .brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        .nav-btn {
+            background: var(--text-primary);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 980px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.04);
+            background: #ffffff;
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
             display: grid;
-            grid-template-columns: 1fr 340px;
-            gap: 40px;
+            grid-template-columns: 1fr 400px;
+            gap: 60px;
             align-items: center;
         }
 
-        @media (max-width: 768px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-        }
-
-        .profile-img {
-            width: 100%;
-            max-width: 340px;
-            border-radius: 16px;
-            border: 2px solid var(--accent-color);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
-            object-fit: cover;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            letter-spacing: 1px;
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            font-size: 1.25rem;
-            color: var(--accent-color);
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 980px;
+            color: var(--accent);
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
         }
 
-        .hero-desc {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-        }
-
-        .hero-quote {
-            background: rgba(212, 175, 55, 0.05);
-            border-left: 3px solid var(--accent-color);
-            padding: 15px 20px;
-            border-radius: 0 8px 8px 0;
-            font-style: italic;
-            margin-bottom: 30px;
-            color: #e2e8f0;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #000000;
-            padding: 14px 28px;
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 3.8rem;
+            line-height: 1.05;
             font-weight: 700;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.3s ease;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .btn:hover {
-            background-color: var(--accent-hover);
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 32px;
+            max-width: 580px;
+            line-height: 1.45;
         }
 
-        /* Section Layout */
-        section {
-            padding: 60px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 35px;
-            color: #ffffff;
+        .hero-image-wrapper {
             position: relative;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--accent-color);
-            margin-top: 10px;
+        .hero-image {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            filter: contrast(1.05) brightness(0.95);
+            transition: all 0.5s ease;
         }
 
-        /* Stats Grid */
-        .stats-grid {
+        .hero-image-wrapper:hover .hero-image {
+            transform: scale(1.01);
+            border-color: var(--border-accent);
+        }
+
+        .hero-quote-card {
+            background: rgba(18, 18, 22, 0.7);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-l);
+            padding: 28px;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-quote-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .hero-quote-text {
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* Bento Grid (Stats & Background) */
+        .section-header {
+            margin: 100px 0 40px;
+            text-align: left;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #fff;
+        }
+
+        .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(12, 1fr);
             gap: 20px;
         }
 
-        .stat-card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
+        .bento-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-l);
+            padding: 32px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .stat-card strong {
-            display: block;
+        .bento-card:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .col-4 { grid-column: span 4; }
+        .col-6 { grid-column: span 6; }
+        .col-8 { grid-column: span 8; }
+        .col-12 { grid-column: span 12; }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 12px;
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .stat-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Direction List Cards */
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-m);
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
             font-size: 1.2rem;
-            color: var(--accent-color);
-            margin-bottom: 8px;
-        }
-
-        /* Direction Cards */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 12px;
-        }
-
-        .card h3 {
-            font-size: 1.3rem;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-        }
-
-        .card ul {
-            list-style-position: inside;
-            color: var(--text-muted);
-        }
-
-        .card ul li {
-            margin-bottom: 8px;
-        }
-
-        /* Products Section */
-        .product-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 25px;
-            border-radius: 12px;
             margin-bottom: 20px;
         }
 
-        .product-item h3 {
-            color: #ffffff;
-            margin-bottom: 10px;
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
         }
 
-        .product-item p {
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-
-        /* Links & Contacts */
-        .links-list {
+        .card-list {
             list-style: none;
         }
 
-        .links-list li {
-            margin-bottom: 15px;
+        .card-list li {
+            position: relative;
+            padding-left: 20px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
         }
 
-        .links-list a {
-            color: var(--accent-color);
+        .card-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Products Showcase */
+        .product-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .product-info {
+            max-width: 650px;
+        }
+
+        .product-badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .product-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .product-desc {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        /* Primary Action CTA */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(180deg, #d4af37 0%, #b59226 100%);
+            color: #000;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 980px;
             text-decoration: none;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 30px rgba(212, 175, 55, 0.4);
+            filter: brightness(1.1);
+        }
+
+        /* Links List */
+        .media-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 28px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-l);
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .media-link:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-accent);
+            padding-left: 34px;
+        }
+
+        .media-link-title {
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
-        .links-list a:hover {
-            text-decoration: underline;
+        .media-link-arrow {
+            color: var(--accent);
+            font-size: 1.2rem;
         }
 
+        /* Footer */
         footer {
-            padding: 40px 0;
+            margin-top: 100px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
             text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-image {
+                height: 400px;
+            }
+
+            .col-4, .col-6, .col-8 {
+                grid-column: span 12;
+            }
+
+            .product-card {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 28px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- Hero Section -->
-    <header>
-        <div class="hero-grid">
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="brand">МАРИНА <span>КИРИНА</span></div>
+            <a href="https://telegram.me/more_kastinga" target="_blank" class="nav-btn">Связаться в Telegram</a>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
             <div>
-                <h1>МАРИНА КИРИНА</h1>
-                <div class="subtitle">Бренд-режиссер • Директор по кастингу • Агент актеров • Эксперт по верификации личности и мотивов</div>
-                <p class="hero-desc">
-                    Снимаю маски и очищаю от иллюзий бизнес, найм и личные союзы. 20 лет в ТВ-кастингах, более 800&nbsp;000 проведенных собеседований. 18 лет веду актеров высшей лиги. Более 100 успешных союзов в жизни и бизнесе. 30 лет в счастливом браке (в 2026 году — серебряная свадьба).
+                <span class="hero-tag">Бренд-режиссура &amp; Верификация</span>
+                <h1 class="hero-title">Снимаю маски.<br>Убираю иллюзии.</h1>
+                <p class="hero-subtitle">
+                    Бренд-режиссер, директор по кастингу, агент актеров и профайлер. Очищаю от фальши бизнес, найм и межличностные союзы.
                 </p>
-                <div class="hero-quote">
-                    «Неважно, строите ли вы бизнес, ищете продюсера, развиваете личный бренд или создаете семью. Успех в любом деле зависит от одного: умеют ли люди слышать, чувствовать друг друга и видеть реальность без самообмана».
+                <a href="https://t.me/Zakroi_geshtalt/2256" target="_blank" class="cta-btn">
+                    Забрать кейс «Разбор топа» ➔
+                </a>
+
+                <div class="hero-quote-card">
+                    <p class="hero-quote-text">
+                        «Неважно, строите ли вы бизнес, ищете продюсера, развиваете личный бренд или создаете семью. Успех зависит от одного: умеют ли люди слышать друг друга и видеть реальность без самообмана».
+                    </p>
                 </div>
-                <a href="https://t.me/Zakroi_geshtalt/2256" target="_blank" class="btn">Забрать разбор: Как «идеальный» топ слил бюджет</a>
             </div>
-            <div>
-                <img src="2026-05-28 14.52.02 2.jpg" alt="Марина Кирина" class="profile-img">
+
+            <div class="hero-image-wrapper">
+                <img src="2026-05-28 14.52.02 2.jpg?v=20260806" alt="Марина Кирина" class="hero-image">
+            </div>
+        </section>
+
+        <!-- Bento Grid: Numbers & Background -->
+        <div class="section-header">
+            <div class="section-label">Твердый фундамент</div>
+            <h2 class="section-title">Масштаб и экспертный опыт</h2>
+        </div>
+
+        <div class="bento-grid">
+            <div class="bento-card col-4">
+                <div class="stat-number">20 лет</div>
+                <div class="stat-label">В ТВ-кастингах</div>
+                <div class="stat-desc">50+ крупнейших проектов на федеральных каналах: Первый, ТНТ, СТС, Пятница!, Россия, Disney, ТВ-3, МУЗ-ТВ, Матч ТВ.</div>
+            </div>
+
+            <div class="bento-card col-4">
+                <div class="stat-number">800K+</div>
+                <div class="stat-label">Собеседований</div>
+                <div class="stat-desc">Глубокая психологическая верификация: за 3 минуты считывается реальное зерно личности, а не роль.</div>
+            </div>
+
+            <div class="bento-card col-4">
+                <div class="stat-number">1 000+</div>
+                <div class="stat-label">Медийных личностей</div>
+                <div class="stat-desc">Старт и раскрытие потенциала: Лев Смольников, Влад Кадони, сестры Колисниченко, Олег Майами и многие другие.</div>
+            </div>
+
+            <div class="bento-card col-6">
+                <div class="stat-number">18 лет</div>
+                <div class="stat-label">Актерский агент</div>
+                <div class="stat-desc">Лично веду и продюсирую актера Андрея Пынзару: прошли путь от парня из Молдовы до востребованного актера-миллионера.</div>
+            </div>
+
+            <div class="bento-card col-6">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Успешных союзов</div>
+                <div class="stat-desc">Сваха и соединитель судеб. Более 100 союзов в бизнесе и жизни. 30 лет в собственном счастливом браке (серебряная свадьба в 2026 году).</div>
             </div>
         </div>
-    </header>
 
-    <!-- Background & Scale -->
-    <section>
-        <h2 class="section-title">Масштаб и опыт в цифрах</h2>
-        <div class="stats-grid">
-            <div class="stat-card">
-                <strong>20 лет в ТВ-кастингах</strong>
-                Создание 50+ крупнейших проектов для ведущих федеральных каналов: Первый канал, ТНТ, СТС, Пятница!, Россия, Disney, Перец, ТВ-3, МУЗ-ТВ, Матч ТВ и др.
-            </div>
-            <div class="stat-card">
-                <strong>800 000+ собеседований</strong>
-                Глубокий профайлинг, где за 3 минуты считывается реальная личность, а не заученная роль.
-            </div>
-            <div class="stat-card">
-                <strong>1 000+ медийных личностей</strong>
-                Раскрыла потенциал и дала старт звездам и топ-менеджерам медиаиндустрии: Лев Смольников, Влад Кадони, сестры Колисниченко, Олег Майами и десятки других.
-            </div>
-            <div class="stat-card">
-                <strong>18 лет — Актерский агент</strong>
-                Лично веду и продюсирую актера Андрея Пынзару. Прошли путь от молодого парня из Молдовы, мечтавшего о кино, до востребованного актера-миллионера.
-            </div>
-            <div class="stat-card">
-                <strong>100+ созданных союзов</strong>
-                Сваха и соединитель судеб: более 100 успешных и крепких союзов в бизнесе и личной жизни сложились благодаря точному считыванию мотивов.
-            </div>
-            <div class="stat-card">
-                <strong>30 лет в счастливом браке</strong>
-                Личный практический фундамент того, как строить глубокие, честные и крепкие отношения без иллюзий, манипуляций и фальши.
-            </div>
+        <!-- Directions Section -->
+        <div class="section-header">
+            <div class="section-label">Специализация</div>
+            <h2 class="section-title">С какими задачами я работаю</h2>
         </div>
-    </section>
 
-    <!-- Work Directions -->
-    <section>
-        <h2 class="section-title">С чем ко мне обращаются</h2>
-        <div class="cards-grid">
-            <div class="card">
-                <h3>1. Межличностные отношения и семья</h3>
-                <ul>
-                    <li>Выход из замкнутого круга ошибок при выборе спутника жизни.</li>
-                    <li>Распознавание манипуляций, масок и скрытых мотивов на первых этапах общения.</li>
+        <div class="bento-grid">
+            <div class="bento-card col-6">
+                <div class="card-icon">🖤</div>
+                <h3 class="card-title">1. Межличностные отношения &amp; Семья</h3>
+                <ul class="card-list">
+                    <li>Выход из круга повторения ошибок при выборе партнера.</li>
+                    <li>Распознавание масок, манипуляций и скрытых мотивов на старте.</li>
                     <li>Построение союза на десятилетия без самообмана.</li>
                 </ul>
             </div>
-            <div class="card">
-                <h3>2. Раскрытие потенциала и Личный Бренд</h3>
-                <ul>
-                    <li>Выход экспертов, актеров и лидеров на новый уровень масштаба, медийности и гонораров.</li>
+
+            <div class="bento-card col-6">
+                <div class="card-icon">⚡</div>
+                <h3 class="card-title">2. Личный Бренд &amp; Масштаб</h3>
+                <ul class="card-list">
+                    <li>Выход экспертов, актеров и лидеров на новый уровень гонораров и масштаба.</li>
                     <li>Формирование зерна личности и авторская бренд-режиссура.</li>
                 </ul>
             </div>
-            <div class="card">
-                <h3>3. Проверка подрядчиков и продюсеров</h3>
-                <ul>
-                    <li>Защита экспертов от «красивых продавцов услуг».</li>
-                    <li>Верификация продюсеров, маркетологов, SMM и партнеров-пустышек до передачи бюджетов.</li>
+
+            <div class="bento-card col-6">
+                <div class="card-icon">🎯</div>
+                <h3 class="card-title">3. Проверка подрядчиков и продюсеров</h3>
+                <ul class="card-list">
+                    <li>Защита от «красивых продавцов услуг» и маркетологов-пустышек.</li>
+                    <li>Аудит обещанных KPI и верификация мотивов до оплаты.</li>
                 </ul>
             </div>
-            <div class="card">
-                <h3>4. Найм топов и партнерство в бизнесе</h3>
-                <ul>
-                    <li>Аудит ключевых управленцев (CEO, COO) и защита от «глянцевых резюме».</li>
-                    <li>Проверка сооснователей (Co-founders) и инвесторов перед входом в сделки.</li>
+
+            <div class="bento-card col-6">
+                <div class="card-icon">💼</div>
+                <h3 class="card-title">4. Найм Топов (CEO) &amp; Партнеров</h3>
+                <ul class="card-list">
+                    <li>Аудит управленцев и защита от «актеров с глянцевым резюме».</li>
+                    <li>Проверка сооснователей (Co-founders) и инвесторов перед сделкой.</li>
                 </ul>
             </div>
         </div>
-    </section>
 
-    <!-- Product Line -->
-    <section>
-        <h2 class="section-title">Форматы работы и продукты</h2>
-        
-        <div class="product-item">
-            <h3> Бесплатный разбор (Точка входа)</h3>
-            <p><strong>«Чек-лист: 5 вопросов из ТВ-кастингов, которые срывают маски с топов»</strong> — Разбор кейса: как «идеальный» управленец слил бюджет за 2 месяца, а кастинг-метод вскрыл обман за 15 минут.</p>
-            <a href="https://t.me/Zakroi_geshtalt/2256" target="_blank" class="btn">Перейти в Telegram и забрать чек-лист</a>
+        <!-- Product Line -->
+        <div class="section-header">
+            <div class="section-label">Форматы</div>
+            <h2 class="section-title">Продуктовая линейка</h2>
         </div>
 
-        <div class="product-item">
-            <h3> Практикумы и мини-продукты</h3>
-            <p>• <strong>«Тест на фальшь: Проверка партнера в бизнесе, инвестициях и жизни»</strong> — экспресс-система верификации мотивов и выявления масок.</p>
-            <p>• <strong>«Красные флаги подрядчиков и продюсеров»</strong> — как не слить деньги на маркетологов и партнеров-пустышек.</p>
+        <div class="product-card">
+            <div class="product-info">
+                <span class="product-badge">Бесплатный разбор • Точка входа</span>
+                <h3 class="product-title">5 вопросов из ТВ-кастингов, срывающих маски</h3>
+                <p class="product-desc">Разбор кейса: как «идеальный» управленец слил бюджет за 2 месяца, а кастинг-метод вскрыл обман за 15 минут.</p>
+            </div>
+            <a href="https://t.me/Zakroi_geshtalt/2256" target="_blank" class="cta-btn">Забрать в Telegram</a>
         </div>
 
-        <div class="product-item">
-            <h3> Индивидуальный аудит и Сопровождение</h3>
-            <p>• <strong>«Найм управленца / Подрядчика»</strong> — личное участие в собеседовании и вынесение вердикта risk-free.</p>
-            <p>• <strong>«Бренд-режиссура и Агентское сопровождение»</strong> — продвижение актеров и экспертов.</p>
-            <p>• <strong>«Аудит межличностных отношений»</strong> — глубокая консультационная работа и сопровождение союзов.</p>
+        <div class="product-card">
+            <div class="product-info">
+                <span class="product-badge">Практикумы &amp; Практика</span>
+                <h3 class="product-title">«Тест на фальшь» &amp; «Красные флаги»</h3>
+                <p class="product-desc">Экспресс-системы проверки партнеров в бизнесе, инвестициях, личной жизни и защита от недобросовестных подрядчиков.</p>
+            </div>
+            <a href="https://telegram.me/more_kastinga" target="_blank" class="cta-btn">Узнать подробности</a>
         </div>
-    </section>
 
-    <!-- Proofs & Media -->
-    <section>
-        <h2 class="section-title">Знакомство и медиа</h2>
-        <ul class="links-list">
-            <li>📺 <a href="https://youtu.be/Hpc5TMpK8lU?si=1kg-4GmFB6gOHg0B" target="_blank">Интервью Марины Кириной о медиа-опыте на YouTube</a> — откройте, чтобы глубже познакомиться с подходом и жизненным путем в ТВ.</li>
-            <li>📄 <a href="https://teletype.in/@marinakirina/kuzma_lojnikov" target="_blank">Разбор кейса Кузьмы Ложникова на Teletype</a></li>
-            <li>💬 <a href="https://telegram.me/keys_otziv_M_lb" target="_blank">Telegram-канал с кейсами и отзывами клиентов</a></li>
-        </ul>
-    </section>
+        <div class="product-card">
+            <div class="product-info">
+                <span class="product-badge">Персональная работа</span>
+                <h3 class="product-title">Индивидуальный аудит &amp; Сопровождение</h3>
+                <p class="product-desc">Личное участие Марины Кириной в собеседовании топов, бренд-режиссура взаимодействия, сопровождение союзов и сделок.</p>
+            </div>
+            <a href="https://telegram.me/more_kastinga" target="_blank" class="cta-btn">Записаться на аудит</a>
+        </div>
 
-    <!-- Contacts -->
-    <section>
-        <h2 class="section-title">Контакты и связь</h2>
-        <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-muted);">
-            Опишите вашу ситуацию (отношения, раскрытие потенциала, продюсирование, бизнес-партнерство или найм), и мы определим точную стратегию решения.
-        </p>
-        <p style="font-size: 1.1rem; margin-bottom: 10px;"><strong>Telegram:</strong> <a href="https://telegram.me/more_kastinga" target="_blank" style="color: var(--accent-color);">@more_kastinga</a></p>
-        <p style="font-size: 1.1rem; margin-bottom: 10px;"><strong>Email:</strong> <a href="mailto:kasting_director@mail.ru" style="color: var(--accent-color);">kasting_director@mail.ru</a></p>
-        <p style="font-size: 1.1rem; margin-bottom: 25px;"><strong>Телефон:</strong> +7 (926) 537-18-44</p>
-        <a href="https://telegram.me/more_kastinga" target="_blank" class="btn">Написать Марине Кириной в Telegram</a>
-    </section>
+        <!-- Media & Contact Section -->
+        <div class="section-header">
+            <div class="section-label">Медиа &amp; Связь</div>
+            <h2 class="section-title">Познакомиться ближе</h2>
+        </div>
 
-    <footer>
-        <p>© 2026 Марина Кирина. Все права защищены.</p>
-    </footer>
-</div>
+        <a href="https://youtu.be/Hpc5TMpK8lU?si=1kg-4GmFB6gOHg0B" target="_blank" class="media-link">
+            <span class="media-link-title">📺 Интервью Марины Кириной о медиа-опыте (YouTube)</span>
+            <span class="media-link-arrow">➔</span>
+        </a>
+
+        <a href="https://teletype.in/@marinakirina/kuzma_lojnikov" target="_blank" class="media-link">
+            <span class="media-link-title">📄 Разбор кейса Кузьмы Ложникова (Teletype)</span>
+            <span class="media-link-arrow">➔</span>
+        </a>
+
+        <a href="https://telegram.me/keys_otziv_M_lb" target="_blank" class="media-link">
+            <span class="media-link-title">💬 Telegram-канал с реальными отзывами и кейсами</span>
+            <span class="media-link-arrow">➔</span>
+        </a>
+
+        <div style="margin-top: 60px; text-align: center; background: var(--surface); padding: 50px 20px; border-radius: var(--radius-xl); border: 1px solid var(--border);">
+            <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 12px; color: #fff;">Готовы исключить ошибки?</h3>
+            <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 30px;">
+                Напишите мне в Telegram, опишите вашу ситуацию, и мы подберем точный формат работы.
+            </p>
+            <a href="https://telegram.me/more_kastinga" target="_blank" class="cta-btn" style="font-size: 1.1rem; padding: 18px 40px;">
+                Написать Марине Кириной
+            </a>
+        </div>
+
+        <footer>
+            <p>© 2026 Марина Кирина. Все права защищены.</p>
+        </footer>
+    </div>
 
 </body>
 </html>
