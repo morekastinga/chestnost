@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Марина Кирина — Бренд-режиссер и эксперт по верификации</title>
-    <!-- Подключение шрифтов Cormorant Garamond и Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg-pastel: #F8F6F0;
             --bg-card: #FFFFFF;
             --bg-dark: #111111;
+            --bg-dark-card: #1A1A1A;
             --text-main: #222222;
             --text-muted: #666666;
             --text-light: #F5F5F5;
+            --text-dark-muted: #AAAAAA;
             --gold-accent: #D4AF37;
-            --orange-accent: #E85A3C;
             --gold-hover: #B59226;
             --black-btn: #1A1A1A;
             --font-heading: 'Cormorant Garamond', serif;
@@ -63,7 +63,7 @@
 
         .btn-gold {
             background-color: var(--gold-accent);
-            color: #111;
+            color: #111111;
         }
 
         .btn-gold:hover {
@@ -73,16 +73,16 @@
 
         .btn-black {
             background-color: var(--black-btn);
-            color: #FFF;
+            color: #FFFFFF;
         }
 
         .btn-black:hover {
             background-color: var(--gold-accent);
-            color: #111;
+            color: #111111;
             transform: translateY(-2px);
         }
 
-        /* Секция 1: Главный экран (Пастельный) */
+        /* Секция 1: Главный экран */
         .hero {
             padding: 80px 0;
             min-height: 90vh;
@@ -101,7 +101,7 @@
             font-family: var(--font-heading);
             font-size: 52px;
             line-height: 1.15;
-            color: #111;
+            color: #111111;
             margin-bottom: 24px;
             font-weight: 700;
         }
@@ -137,7 +137,7 @@
             object-fit: cover;
         }
 
-        /* Секция 2: Путь (Пастельный) */
+        /* Секция 2: Путь */
         .about-section {
             padding: 100px 0;
             background-color: var(--bg-pastel);
@@ -152,7 +152,7 @@
         .section-header h2 {
             font-family: var(--font-heading);
             font-size: 42px;
-            color: #111;
+            color: #111111;
         }
 
         .timeline {
@@ -195,7 +195,7 @@
         }
 
         .channel-promo-box {
-            background: #FFF;
+            background: #FFFFFF;
             padding: 30px;
             border-radius: 8px;
             border: 1px solid rgba(212, 175, 55, 0.3);
@@ -203,7 +203,7 @@
             text-align: center;
         }
 
-        /* Секция 3: Направления (ЧЕРНЫЙ КОНЦЕРТНЫЙ БЛОК) */
+        /* Секция 3: Направления (ТЕМНЫЙ БЛОК) */
         .services-section {
             background-color: var(--bg-dark);
             color: var(--text-light);
@@ -211,6 +211,8 @@
         }
 
         .services-section .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 42px;
             color: var(--gold-accent);
         }
 
@@ -222,11 +224,11 @@
         }
 
         .service-card {
-            background: #1A1A1A;
-            border: 1px solid #333;
+            background: var(--bg-dark-card);
+            border: 1px solid #333333;
             padding: 40px 30px;
             border-radius: 8px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .service-card:hover {
@@ -254,7 +256,7 @@
         .service-list li {
             margin-bottom: 12px;
             font-size: 14px;
-            color: #CCC;
+            color: #CCCCCC;
             position: relative;
             padding-left: 20px;
         }
@@ -266,49 +268,42 @@
             color: var(--gold-accent);
         }
 
-        /* СЕКЦИЯ: Что происходит с людьми в моём поле (ТЕМНЫЙ БЛОК) */
+        /* СЕКЦИЯ: Что происходит с людьми в моём поле (В ЕДИНОМ ТЕМНОМ СТИЛЕ) */
         .field-section {
-            background-color: #0A0A0A;
-            color: #FFF;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             padding: 100px 0;
-            border-top: 1px solid #222;
+            border-top: 1px solid #222222;
         }
 
         .field-tag {
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--gold-accent);
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .field-tag::before {
-            content: "●";
-            color: var(--orange-accent);
-            font-size: 10px;
+            font-weight: 600;
         }
 
         .field-title {
             font-family: var(--font-heading);
-            font-size: 46px;
+            font-size: 48px;
             line-height: 1.15;
-            text-transform: uppercase;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-weight: 700;
+            color: #FFFFFF;
         }
 
         .field-title span {
-            color: var(--orange-accent);
+            color: var(--gold-accent);
         }
 
         .field-subtitle {
-            font-size: 18px;
-            color: #AAA;
+            font-size: 17px;
+            color: var(--text-dark-muted);
             margin-bottom: 50px;
             max-width: 800px;
+            font-weight: 300;
         }
 
         .field-list {
@@ -319,31 +314,37 @@
         }
 
         .field-item {
-            border-left: 2px solid var(--orange-accent);
-            padding-left: 25px;
+            background: var(--bg-dark-card);
+            border-left: 3px solid var(--gold-accent);
+            padding: 25px 30px;
+            border-radius: 0 8px 8px 0;
+            border-top: 1px solid #222;
+            border-right: 1px solid #222;
+            border-bottom: 1px solid #222;
         }
 
         .field-before {
-            font-size: 16px;
-            color: #BBB;
+            font-size: 15px;
+            color: var(--text-dark-muted);
             margin-bottom: 8px;
+            line-height: 1.5;
         }
 
         .field-arrow {
-            color: var(--orange-accent);
+            color: var(--gold-accent);
             margin-bottom: 8px;
             font-size: 18px;
+            font-weight: bold;
         }
 
         .field-after {
-            font-size: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #FFF;
-            letter-spacing: 0.5px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #FFFFFF;
+            letter-spacing: 0.3px;
         }
 
-        /* Секция 4: Кейсы (Пастельный) */
+        /* Секция 4: Кейсы */
         .cases-section {
             padding: 100px 0;
             background-color: var(--bg-pastel);
@@ -368,7 +369,7 @@
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 15px;
-            color: #111;
+            color: #111111;
         }
 
         .case-block {
@@ -385,7 +386,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Секция 5: Диагностика & CTA (ЧЕРНЫЙ КОНЦЕРТНЫЙ БЛОК) */
+        /* Секция 5: Диагностика & CTA */
         .cta-section {
             background-color: var(--bg-dark);
             color: var(--text-light);
@@ -411,14 +412,14 @@
 
         .cta-desc {
             font-size: 16px;
-            color: #DDD;
+            color: #DDDDDD;
             margin-bottom: 35px;
         }
 
         .qr-placeholder {
             margin-top: 30px;
             font-size: 13px;
-            color: #888;
+            color: #888888;
         }
 
         /* Адаптивность */
@@ -434,7 +435,7 @@
                 font-size: 38px;
             }
             .field-title {
-                font-size: 32px;
+                font-size: 36px;
             }
             .timeline {
                 padding-left: 20px;
@@ -498,7 +499,7 @@
                 <div class="timeline-item">
                     <div class="timeline-date">2008 – 2020</div>
                     <div class="timeline-title">Эра федеральных каналов</div>
-                    <p>50+ проектов на ТНТ, СТС, Первом и «Пятнице». 800 000+ собеседований. Кадони, Смольников и понимание: настоящая медийность — это право быть собой.</p>
+                    <p>50+ проектов на ТНТ, СТС, Первом и «Пятнице». 800 000+ собеседований. Понимание: настоящая медийность — это право быть собой.</p>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-date">2020 – 2022</div>
@@ -520,7 +521,7 @@
         </div>
     </section>
 
-    <!-- БЛОК 3: С чем ко мне можно обратиться (Черный блок) -->
+    <!-- БЛОК 3: Направления -->
     <section class="services-section">
         <div class="container">
             <div class="section-header">
@@ -557,36 +558,36 @@
         </div>
     </section>
 
-    <!-- БЛОК 3.5: ЧТО ПРОИСХОДИТ С ЛЮДЬМИ В МОЁМ ПОЛЕ (Черный контентный блок) -->
+    <!-- БЛОК 3.5: ЧТО ПРОИСХОДИТ С ЛЮДЬМИ В МОЁМ ПОЛЕ (В ЕДИНОМ СТИЛЕ) -->
     <section class="field-section">
         <div class="container">
             <div class="field-tag">21 год наблюдений</div>
             <h2 class="field-title">Что происходит с людьми <span>в моём поле</span></h2>
-            <p class="field-subtitle">Сегодня, оглядываясь назад, я понимаю: тысячи людей попали в моё поле — и изменили жизнь на 180 градусов.</p>
+            <p class="field-subtitle">Сегодня, оглядываясь назад, я понимаю: тысячи людей попали в моё поле — и изменили свою жизнь на 180 градусов.</p>
             
             <div class="field-list">
                 <div class="field-item">
                     <div class="field-before">Отношения, которые убивали личность и делали токсичным весь мир человека</div>
                     <div class="field-arrow">→</div>
-                    <div class="field-after">сегодня счастливая семья и дети</div>
+                    <div class="field-after">Сегодня — счастливая семья и дети</div>
                 </div>
 
                 <div class="field-item">
                     <div class="field-before">Отчаяние, когда не понимаешь, кто ты, и бегаешь по кругу, не видя будущего</div>
                     <div class="field-arrow">→</div>
-                    <div class="field-after">сегодня успешные проекты и уверенность в завтрашнем дне</div>
+                    <div class="field-after">Сегодня — успешные проекты и уверенность в завтрашнем дне</div>
                 </div>
 
                 <div class="field-item">
                     <div class="field-before">Боль от непонимания себя и борьба за жизнь</div>
                     <div class="field-arrow">→</div>
-                    <div class="field-after">сегодня блогеры-миллионники, которые открыто строят свою счастливую жизнь</div>
+                    <div class="field-after">Сегодня — блогеры-миллионники, которые открыто строят свою счастливую жизнь</div>
                 </div>
 
                 <div class="field-item">
                     <div class="field-before">А кто-то просто остался рядом на годы</div>
                     <div class="field-arrow">→</div>
-                    <div class="field-after">потому что одна встреча стала важной и ценной на всю жизнь</div>
+                    <div class="field-after">Потому что одна встреча стала важной и ценной на всю жизнь</div>
                 </div>
             </div>
         </div>
@@ -600,10 +601,10 @@
             </div>
             <div class="cases-grid">
                 <div class="case-card">
-                    <div class="case-name">Влад Кадони</div>
+                    <div class="case-name">Владислав Михайлов</div>
                     <div class="case-block"><strong>Было:</strong> Непонимание правил ТВ-игры, волна негатива.</div>
                     <div class="case-block"><strong>Что сделали:</strong> План выхода в топ, смыслы, точечное позиционирование.</div>
-                    <div class="case-block"><strong>Стало:</strong> Успешный ведущий федерального канала, лидер мнений.</div>
+                    <div class="case-block"><strong>Стало:</strong> Успешный эксперт и медийный лидер мнений.</div>
                 </div>
                 <div class="case-card">
                     <div class="case-name">Илья · Психотерапевт</div>
@@ -639,7 +640,7 @@
         </div>
     </section>
 
-    <!-- БЛОК 5: Диагностика и CTA (Черный блок) -->
+    <!-- БЛОК 5: Диагностика и CTA -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-box">
