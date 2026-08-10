@@ -203,11 +203,73 @@
             text-align: center;
         }
 
-        /* Секция 3: Направления (ТЕМНЫЙ БЛОК) */
+        /* СЕКЦИЯ: Видеоинтервью */
+        .interviews-section {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 100px 0;
+            border-top: 1px solid #222222;
+        }
+
+        .interviews-section .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 42px;
+            color: var(--gold-accent);
+        }
+
+        .interviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .interview-card {
+            background: var(--bg-dark-card);
+            border: 1px solid #333333;
+            padding: 35px 30px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .interview-card:hover {
+            border-color: var(--gold-accent);
+            transform: translateY(-5px);
+        }
+
+        .interview-tag {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold-accent);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .interview-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #FFFFFF;
+            line-height: 1.3;
+        }
+
+        .interview-desc {
+            font-size: 14px;
+            color: var(--text-dark-muted);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        /* Секция 3: Направления */
         .services-section {
             background-color: var(--bg-dark);
             color: var(--text-light);
             padding: 100px 0;
+            border-top: 1px solid #222222;
         }
 
         .services-section .section-header h2 {
@@ -268,7 +330,7 @@
             color: var(--gold-accent);
         }
 
-        /* СЕКЦИЯ: Что происходит с людьми в моём поле (В ЕДИНОМ ТЕМНОМ СТИЛЕ) */
+        /* СЕКЦИЯ: Что происходит с людьми в моём поле */
         .field-section {
             background-color: var(--bg-dark);
             color: var(--text-light);
@@ -521,6 +583,34 @@
         </div>
     </section>
 
+    <!-- БЛОК 2.5: Познакомиться со мной (Интервью) -->
+    <section class="interviews-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Познакомиться со мной лично</h2>
+            </div>
+            <div class="interviews-grid">
+                <div class="interview-card">
+                    <div>
+                        <div class="interview-tag">Личный бренд & Пиар</div>
+                        <h3 class="interview-title">В известность через постель / Работа с Собчак и Бузовой / Триггерный «Дом-2»</h3>
+                        <p class="interview-desc">Большой разговор о стратегии личного бренда, проявленности и о том, почему настоящая популярность — это не про фальшивые прогревы, а про глубинную экспертность и истинный масштаб личности.</p>
+                    </div>
+                    <a href="https://youtu.be/CB24o21zBcI" class="btn btn-gold" target="_blank">Смотреть интервью</a>
+                </div>
+
+                <div class="interview-card">
+                    <div>
+                        <div class="interview-tag">Закулисье ТВ & Шоу-бизнес</div>
+                        <h3 class="interview-title">Ольга Бузова, «Дом-2», съемки, кастинги! Залипательное видео!</h3>
+                        <p class="interview-desc">Изнанка телевизионных реалити, работа на главных федеральных каналах и путь создания звезд. Как работают кастинги, что открывает любые двери и как проявляться в медиа без потери себя.</p>
+                    </div>
+                    <a href="https://youtu.be/Hpc5TMpK8lU" class="btn btn-gold" target="_blank">Смотреть интервью</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- БЛОК 3: Направления -->
     <section class="services-section">
         <div class="container">
@@ -558,7 +648,7 @@
         </div>
     </section>
 
-    <!-- БЛОК 3.5: ЧТО ПРОИСХОДИТ С ЛЮДЬМИ В МОЁМ ПОЛЕ (В ЕДИНОМ СТИЛЕ) -->
+    <!-- БЛОК 3.5: ЧТО ПРОИСХОДИТ С ЛЮДЬМИ В МОЁМ ПОЛЕ -->
     <section class="field-section">
         <div class="container">
             <div class="field-tag">21 год наблюдений</div>
