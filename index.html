@@ -82,6 +82,18 @@
             transform: translateY(-2px);
         }
 
+        /* Заголовки секций */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 42px;
+            color: #111111;
+        }
+
         /* Секция 1: Главный экран */
         .hero {
             padding: 80px 0;
@@ -137,22 +149,123 @@
             object-fit: cover;
         }
 
+        /* СЕКЦИЯ: Специализация и Экспертиза */
+        .expertise-section {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 100px 0;
+            border-top: 1px solid #222222;
+        }
+
+        .expertise-section .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 42px;
+            color: var(--gold-accent);
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .expertise-card {
+            background: var(--bg-dark-card);
+            border: 1px solid #333333;
+            border-top: 3px solid var(--gold-accent);
+            padding: 35px 30px;
+            border-radius: 8px;
+        }
+
+        .expertise-card h3 {
+            font-size: 20px;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .expertise-list {
+            list-style: none;
+        }
+
+        .expertise-list li {
+            font-size: 14px;
+            color: #CCCCCC;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .expertise-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--gold-accent);
+            font-weight: bold;
+        }
+
+        .expertise-list strong {
+            color: #FFFFFF;
+        }
+
+        /* Таблица показателей */
+        .metrics-block {
+            margin: 60px 0;
+            background: var(--bg-dark-card);
+            border: 1px solid #333333;
+            border-radius: 8px;
+            padding: 40px;
+        }
+
+        .metrics-block h3 {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            color: var(--gold-accent);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .metrics-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .metrics-table th, .metrics-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #2D2D2D;
+        }
+
+        .metrics-table th {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold-accent);
+            background: #111111;
+        }
+
+        .metrics-table td {
+            font-size: 15px;
+            color: #DDDDDD;
+        }
+
+        .metrics-table tr:hover td {
+            background: rgba(212, 175, 55, 0.03);
+        }
+
+        .metrics-table td strong {
+            color: var(--gold-accent);
+            font-size: 18px;
+        }
+
         /* Секция 2: Путь */
         .about-section {
             padding: 100px 0;
             background-color: var(--bg-pastel);
             border-top: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-family: var(--font-heading);
-            font-size: 42px;
-            color: #111111;
         }
 
         .timeline {
@@ -510,6 +623,10 @@
             .timeline {
                 padding-left: 20px;
             }
+            .metrics-table {
+                display: block;
+                overflow-x: auto;
+            }
         }
     </style>
 </head>
@@ -531,6 +648,86 @@
                     <img src="photo2.jpg" alt="Марина Кирина" class="hero-image">
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- НОВЫЙ БЛОК: Главная специализация и Экспертиза -->
+    <section class="expertise-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Специализация & Экспертный статус</h2>
+            </div>
+
+            <div class="expertise-grid">
+                <!-- Главная специализация -->
+                <div class="expertise-card">
+                    <h3>Главная специализация и ключевая экспертиза</h3>
+                    <ul class="expertise-list">
+                        <li><strong>Бренд-режиссура и медиастратегия выхода в масштаб:</strong> проектирование ролей, смыслов и контекста для личности.</li>
+                        <li><strong>Сопровождение в становлении:</strong> комплексная работа через трансформацию мышления (снятие блоков, зажимов, ограничений) и настройку точных инструментов (контент, публичность, проявленность).</li>
+                        <li><strong>Сквозная поддержка:</strong> прямое задействование личного ресурса, связей и контактов для точечного «выстрела» клиента в его реальный масштаб.</li>
+                    </ul>
+                </div>
+
+                <!-- Экспертный статус -->
+                <div class="expertise-card">
+                    <h3>Экспертный статус</h3>
+                    <ul class="expertise-list">
+                        <li><strong>Профессиональные роли:</strong> Бренд-режиссер, эксперт по верификации личности, профайлер, архитектор личности, сваха.</li>
+                        <li><strong>Телевизионный опыт:</strong> 20+ лет работы в сфере ТВ-производства и кастинга на федеральных каналах.</li>
+                    </ul>
+                </div>
+
+                <!-- Ключевые продукты -->
+                <div class="expertise-card">
+                    <h3>Продукты и сервисы для бизнеса</h3>
+                    <ul class="expertise-list">
+                        <li><strong>Авторская методология диагностики и аудита топ-команд:</strong> глубинная оценка подлинных ценностей, эмпатии и масштаба мышления.</li>
+                        <li><strong>Верификация кадров и кастинг-аудит:</strong> защита собственников бизнеса от манипуляторов, токсичных управленцев и фальшивых резюме.</li>
+                        <li><strong>Персональная бренд-режиссура:</strong> точечное сопровождение предпринимателей и экспертов до результатов в медиа и бизнесе.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Твердые цифры и показатели -->
+            <div class="metrics-block">
+                <h3>Твердые цифры и показатели</h3>
+                <table class="metrics-table">
+                    <thead>
+                        <tr>
+                            <th>Показатель</th>
+                            <th>Масштаб и опыт</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>800 000+</strong></td>
+                            <td>Проведенных собеседований и кастинг-интервью</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1 000+</strong></td>
+                            <td>Раскрытых и запущенных медийных личностей и экспертов (включая Влада Кадони, Олега Майами, Андрея Пынзару)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>100+</strong></td>
+                            <td>Созданных союзов в бизнесе, партнерствах и личной жизни</td>
+                        </tr>
+                        <tr>
+                            <td><strong>18+ лет</strong></td>
+                            <td>Работы с актерами, менторства и ведения экспертов</td>
+                        </tr>
+                        <tr>
+                            <td><strong>С 2020 года</strong></td>
+                            <td>Авторская онлайн-школа, менторство и профессиональное комьюнити для актеров</td>
+                        </tr>
+                        <tr>
+                            <td><strong>С 2022 года</strong></td>
+                            <td>Стратегический консалтинг, авторские мастер-классы, тренинги и МастерМайнды для предпринимателей и экспертов</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </section>
 
@@ -699,7 +896,7 @@
             </div>
             <div class="cases-grid">
                 <div class="case-card">
-                    <div class="case-name">Владислав Михайлов</div>
+                    <div class="case-name">Влад Кадони</div>
                     <div class="case-block"><strong>Было:</strong> Непонимание правил ТВ-игры, волна негатива.</div>
                     <div class="case-block"><strong>Что сделали:</strong> План выхода в топ, смыслы, точечное позиционирование.</div>
                     <div class="case-block"><strong>Стало:</strong> Успешный эксперт и медийный лидер мнений.</div>
